@@ -5,13 +5,16 @@ from template import render, render_with_base
 import json
 import smtplib
 from email.mime.text import MIMEText
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
 app=App()
 
 def send_email(name, email, message):
-    sender="emnahaouemm@gmail.com"
-    password= "fxgq lqgx xmsz yjqq"
-    receiver = "emnahaouemm@gmail.com"
+    sender=os.getenv("EMAIL")
+    password= os.getenv("PASSWORD")
+    receiver =os.getenv("EMAIL")
 
     body = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
     msg=MIMEText(body)
